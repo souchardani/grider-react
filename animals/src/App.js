@@ -1,3 +1,4 @@
+import "./app.css";
 import { useState } from "react";
 import AnimalShow from "./AnimalShow";
 
@@ -21,9 +22,9 @@ function App() {
   });
 
   return (
-    <div>
+    <div className="app">
       <button onClick={handleClick}>Add Animal</button>
-      <div>{renderAnimals}</div>
+      <div className="animal-list">{renderAnimals}</div>
     </div>
   );
 }
