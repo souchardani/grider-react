@@ -1,0 +1,14 @@
+.btn {
+  cursor: pointer;
+}
+
+.img {
+  width: 100px;
+  margin: 10px 0;
+}
+
+.book-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
