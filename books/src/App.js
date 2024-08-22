@@ -1,45 +1,45 @@
 import "./style.css";
 import { useState } from "react";
 import BookCreate from "./components/BookCreate";
-
 import BookList from "./components/BookList";
 
 function App() {
   const [books, setBooks] = useState([]);
 
   const createbook = (title) => {
-    setBooks([
+    const updatedBooks = [
       ...books,
-      {
-        id: books.length++,
-        name: title,
-      },
-    ]);
+      {id: /*books.length++*/ Math.round(Math.random()*9999), title},
+    ]
+    setBooks(updatedBooks);
   };
 
-  const clickDelete = (book) => {
-    setBooks(books.filter((element) => book.id !== element.id));
+  const deleteBookById = (id) => {
+    const updatedBooks = books.filter((element) => {
+      return id !== element.id;
+      })
+    setBooks(updatedBooks);
   };
 
-  const clickEdit = (book) => {
-    setBooks(
-      books.map((element) => {
-        if (element.id === book.id) {
-          return { ...element, name: book.name };
+  const editBookById = (id, newTitle) => {
+      const updatedBooks = books.map((element) => {
+        if (element.id === id) {
+          return { ...element, title: newTitle};
         } else {
           return element;
         }
       })
-    );
+
+      setBooks(updatedBooks);
   };
 
   return (
-    <div>
-      <h1>Your personal list of books</h1>
+    <div className="app">
+      <h1>Reading List</h1>
       <BookList
         books={books}
-        handleDelete={clickDelete}
-        handleEdit={clickEdit}
+        onDelete={deleteBookById}
+        onEdit={editBookById}
       />
       <br />
       <br />
