@@ -9,38 +9,34 @@ function App() {
   const createbook = (title) => {
     const updatedBooks = [
       ...books,
-      {id: /*books.length++*/ Math.round(Math.random()*9999), title},
-    ]
+      { id: Math.round(Math.random() * 9999), title },
+    ];
     setBooks(updatedBooks);
   };
 
   const deleteBookById = (id) => {
     const updatedBooks = books.filter((element) => {
       return id !== element.id;
-      })
+    });
     setBooks(updatedBooks);
   };
 
   const editBookById = (id, newTitle) => {
-      const updatedBooks = books.map((element) => {
-        if (element.id === id) {
-          return { ...element, title: newTitle};
-        } else {
-          return element;
-        }
-      })
+    const updatedBooks = books.map((element) => {
+      if (element.id === id) {
+        return { ...element, title: newTitle };
+      } else {
+        return element;
+      }
+    });
 
-      setBooks(updatedBooks);
+    setBooks(updatedBooks);
   };
 
   return (
     <div className="app">
       <h1>Reading List</h1>
-      <BookList
-        books={books}
-        onDelete={deleteBookById}
-        onEdit={editBookById}
-      />
+      <BookList books={books} onDelete={deleteBookById} onEdit={editBookById} />
       <br />
       <br />
       <BookCreate onCreate={createbook} />
