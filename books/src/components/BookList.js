@@ -1,19 +1,21 @@
 import BookShow from "./BookShow";
+import useBooksContext from "../hooks/use-books-context";
 
-function BookList({ books, onDelete, onEdit }) {
-  const renderedBooks = books.length > 0
-  ? books.map((book) => (
-      <BookShow
-        key={book.id}
-        book={book}
-        onDelete={onDelete}
-        onEdit={onEdit}
-      />
-    ))
-  : "la lista está vacia"
+function BookList() {
+  const { books } = useBooksContext();
+
+  if (!books) {
+    return <div>Error: No books data available.</div>;
+  }
+
+  const renderedBooks =
+    books.length > 0
+      ? books.map((book) => <BookShow key={book.id} book={book} />)
+      : "The list is empty";
 
   return (
     <div className="book-list">
+      <br />
       {renderedBooks}
     </div>
   );
