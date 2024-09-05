@@ -1,48 +1,30 @@
-import Button from "./components/Button";
-import { GoBell } from "react-icons/go";
-import { GoDatabase } from "react-icons/go";
-import { GoCloud } from "react-icons/go";
+import Accordion from "./components/Accordion";
 
 function App() {
-  const handleClick = () => {
-    console.log("click");
-  };
+  const items = [
+    {
+      id: "sdfgdsfg2134",
+      label: "can I use react on a project",
+      content:
+        "you can use react on any project you want. you can use react on any project you want.you can use react on any project you want.you can use react on any project you want.",
+    },
+    {
+      id: "cxvbx32",
+      label: "can I use java on a project",
+      content:
+        "you can use react on any project you want. you can use react on any project you want.you can use react on any project you want.you can use react on any project you want.",
+    },
+    {
+      id: "fdsg2354",
+      label: "can I use .net on a project",
+      content:
+        "you can use react on any project you want. you can use react on any project you want.you can use react on any project you want.you can use react on any project you want.",
+    },
+  ];
 
   return (
-    <div>
-      <div>
-        <Button
-          onClick={handleClick}
-          className="mb-1"
-          secondary
-          rounded
-          outline
-        >
-          <GoBell />
-          Click me
-        </Button>
-      </div>
-      <div>
-        <Button danger outline>
-          <GoCloud />
-          Primary
-        </Button>
-      </div>
-      <div>
-        <Button warning>
-          <GoDatabase /> Buy now
-        </Button>
-      </div>
-      <div>
-        <Button secondary outline>
-          See deal
-        </Button>
-      </div>
-      <div>
-        <Button primary rounded>
-          See deal
-        </Button>
-      </div>
+    <div className="h-screen">
+      <Accordion items={items} />
     </div>
   );
 }
